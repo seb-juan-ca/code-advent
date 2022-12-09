@@ -4,6 +4,13 @@ module cleanCampSections =
         if firstStart<=secondStart && firstEnd>=secondEnd then true
         elif secondStart<=firstStart && secondEnd>=firstEnd then true
         else false
+    
+    let hasOverlapping (firstStart,firstEnd) (secondStart,secondEnd) =
+        if firstStart<=secondStart && firstEnd>=secondStart then true
+        elif firstStart<=secondEnd && firstEnd>=secondEnd then true
+        elif secondStart<=firstStart && secondEnd>=firstStart then true
+        elif secondStart<=firstEnd && secondEnd>=firstEnd then true
+        else false
 
     let parseInterval (value:string) =
         let parsed = value.Split [|'-'|]
